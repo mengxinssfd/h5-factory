@@ -54,7 +54,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style  lang="less" scoped>
   .grid-menu {
     position: relative;
     margin: 0;

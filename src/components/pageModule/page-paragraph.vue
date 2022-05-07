@@ -43,7 +43,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style  lang="less" scoped>
 
   .page-paragraph__title {
     margin-bottom: 10px;

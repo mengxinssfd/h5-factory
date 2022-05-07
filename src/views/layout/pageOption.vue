@@ -42,7 +42,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style  lang="less">
   .app-option {
     width: 360px;
     padding: 0 10px 0 5px;

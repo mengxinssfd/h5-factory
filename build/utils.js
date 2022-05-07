@@ -55,6 +55,11 @@ exports.cssLoaders = function(options) {
           sourceMap: options.sourceMap
         })
       })
+      if(loader === 'sass'){
+        loaders.push({
+          loader
+        })
+      }
     }
 
     return loaders

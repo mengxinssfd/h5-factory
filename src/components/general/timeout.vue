@@ -131,7 +131,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style  lang="less" scoped>
   .timeout-box {
     position: relative;
 

@@ -137,7 +137,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="less" scoped>
   span.form-item-desc {
     font-size: 12px;
     color: #666;

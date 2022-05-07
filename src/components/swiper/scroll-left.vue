@@ -105,7 +105,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .comp-content {
     overflow-x: hidden;
   }

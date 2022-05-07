@@ -89,6 +89,6 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style  lang="less">
 
 </style>

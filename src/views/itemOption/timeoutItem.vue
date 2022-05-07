@@ -375,7 +375,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="less">
   #timoutItem {
 
     .el-dialog__body {

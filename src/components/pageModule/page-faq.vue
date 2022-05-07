@@ -38,7 +38,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style  lang="less" scoped>
   .page-faq {
     display: flex;
 

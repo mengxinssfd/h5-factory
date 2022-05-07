@@ -10,7 +10,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="less" scoped>
   .app-header {
     position: relative;
     height: 60px;
