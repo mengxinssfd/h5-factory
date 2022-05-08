@@ -1,4 +1,4 @@
-module.exports = [
+const menuConfig = [
   {
     title: '通用组件',
     collapse: false,
@@ -103,3 +103,4 @@ module.exports = [
     ]
   }
 ]
+export default menuConfig
