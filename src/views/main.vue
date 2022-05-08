@@ -74,7 +74,7 @@
       </div>
     </div>
 
-    <preview-dialog :show.sync="previewShow"></preview-dialog>
+    <preview-dialog :show.sync="previewShow" :cpnList="compList"></preview-dialog>
 
     <app-opt v-if="currentConfig" :option="currentConfig"></app-opt>
     <app-page-opt v-else :option="pageConfig"></app-page-opt>
@@ -401,7 +401,6 @@
         position: relative;
         width: 100%;
         background-color: transparent;
-        position: relative;
         border: 1px solid #f2f3f4;
         transition: opacity .1s ease-out;
         user-select: none;
