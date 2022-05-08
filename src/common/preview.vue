@@ -50,7 +50,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="scss">
   #preview {
 
     .el-dialog {

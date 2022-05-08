@@ -223,7 +223,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="scss">
   #netImgDialog {
 
     .el-dialog__body {

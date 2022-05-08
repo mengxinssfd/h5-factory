@@ -200,7 +200,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="scss">
   #click {
 
     .el-dialog__body {

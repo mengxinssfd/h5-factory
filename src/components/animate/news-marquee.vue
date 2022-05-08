@@ -68,7 +68,7 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .marquee-box {
     position: relative;
     width: 100%;

@@ -348,7 +348,7 @@
   }
 </script>
 
-<style  lang="less" scoped>
+<style  lang="scss" scoped>
   .app-main {
     position: relative;
     flex: 1;

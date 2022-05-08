@@ -140,7 +140,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="scss">
   #imageClick {
 
     .el-dialog__body {
