@@ -10,7 +10,7 @@
   'desc': '描述文本内容'
 } */
 
-module.exports = {
+export default {
   'base-text': {
     title: '文本',
     domId: '',

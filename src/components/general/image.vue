@@ -42,7 +42,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style  lang="scss" scoped>
   .image-box {
     position: relative;
     overflow: hidden;

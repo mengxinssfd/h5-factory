@@ -43,7 +43,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .bottom-menu {
     display: flex;
     -webkit-box-pack: justify;

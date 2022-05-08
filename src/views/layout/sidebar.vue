@@ -41,7 +41,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style  lang="scss" scoped>
 
 .app-sidebar {
   width: 290px;

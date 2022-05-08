@@ -64,7 +64,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style lang="scss" scoped>
   .floor-menu {
     position: relative;
     display: flex;

@@ -5,16 +5,7 @@
 * github: "https://github.com/yangyuji/news-marquee",
 * version: "1.0.4"
 */
-
-(function (root, factory) {
-  if (typeof module != 'undefined' && module.exports) {
-    module.exports = factory();
-  } else if (typeof define == 'function' && define.amd) {
-    define( function () { return factory(); } );
-  } else {
-    root['newsMarquee'] = factory();
-  }
-}(this, function () {
+export default function newsMarquee() {
   'use strict'
 
   function Marquee(el, opt) {
@@ -73,4 +64,4 @@
   }
 
   return Marquee;
-}));
+}

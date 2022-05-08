@@ -5,14 +5,7 @@
 * github: "https://github.com/yangyuji/drag-area",
 * version: "2.0.0"
 */
-
-(function (root, factory) {
-  if (typeof module != 'undefined' && module.exports) {
-    module.exports = factory();
-  } else {
-    root['dragarea'] = factory();
-  }
-}(this, function () {
+export default function dragarea() {
 
   var getEle = function (str) {
     return document.getElementById(str);
@@ -438,4 +431,4 @@
 
   return dragarea;
 
-}));
+}

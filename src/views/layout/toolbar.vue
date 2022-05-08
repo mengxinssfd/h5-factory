@@ -37,7 +37,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style  lang="scss" scoped>
   .app-toolbar {
     position: relative;
     height: 40px;

@@ -86,6 +86,6 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style  lang="scss">
 
 </style>

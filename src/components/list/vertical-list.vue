@@ -62,7 +62,7 @@
   }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style  lang="scss" scoped>
   .comp-content {
     background-repeat: no-repeat;
   }
