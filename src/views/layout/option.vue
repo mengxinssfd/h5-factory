@@ -113,6 +113,10 @@
           <page-faq-item :paragraphs="option.action.config"></page-faq-item>
         </template>
       </template>
+
+      <template v-if="option.type === 'one-key-copy'">
+        <OneKeyCopy :config="option"></OneKeyCopy>
+      </template>
     </el-form>
   </div>
 </template>
@@ -132,6 +136,7 @@ import gridMenuItem from '@/views/itemOption/gridMenuItem.vue';
 import marqueeItem from '@/views/itemOption/marqueeItem.vue';
 import pageParagraphItem from '@/views/itemOption/pageParagraphItem.vue';
 import pageFaqItem from '@/views/itemOption/pageFaqItem.vue';
+import OneKeyCopy from '@/views/itemOption/OneKeyCopy';
 
 export default {
   name: 'AppOption',
@@ -156,6 +161,7 @@ export default {
     marqueeItem,
     pageParagraphItem,
     pageFaqItem,
+    OneKeyCopy,
   },
   props: {
     option: {

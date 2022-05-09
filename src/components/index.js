@@ -9,6 +9,7 @@ import GridMenu from './general/grid-menu';
 import BaseImage from './general/Image';
 import BaseText from './general/Text';
 import Timeout from './general/Timeout';
+import OneKeyCopy from './general/OneKeyCopy';
 
 import ScrollLeft from './swiper/scroll-left';
 import SwiperBanner from './swiper/swiper-banner';
@@ -41,5 +42,6 @@ export default {
     Vue.component(PageIntro.name, PageIntro);
     Vue.component(PageParagraph.name, PageParagraph);
     Vue.component(PageTitle.name, PageTitle);
+    Vue.component(OneKeyCopy.name, OneKeyCopy);
   },
 };

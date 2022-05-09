@@ -4,6 +4,11 @@ const menuConfig = [
     collapse: false,
     items: [
       {
+        key: 'one-key-copy',
+        text: '一键复制',
+        icon: 'fa-file-text-o',
+      },
+      {
         key: 'base-text',
         text: '文本',
         icon: 'fa-file-text-o',

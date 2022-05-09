@@ -11,6 +11,16 @@
 } */
 
 export default {
+  'one-key-copy': {
+    title: '一键复制',
+    domId: '',
+    domName: '',
+    children: {
+      text: { visible: true, value: '1231' },
+      button: { visible: true, label: '一键复制' },
+      steps: { visible: true, value: ['1.点击“一键复制”', '2.打开【淘宝】', '3.进入详情购买'] },
+    },
+  },
   'base-text': {
     title: '文本',
     domId: '',
