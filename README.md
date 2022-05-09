@@ -6,6 +6,12 @@
 
 > h5专题页面可视化编辑工具，拖拽编辑，灵活切换，一键生成html文件
 
+## 预览
+
+[主页](https://mengxinssfd.github.io/h5-factory/preview/)
+
+[生成页](https://mengxinssfd.github.io/h5-factory/preview/demo)
+
 ## Build Setup
 ``` bash
 # install dependencies
