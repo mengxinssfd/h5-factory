@@ -21,48 +21,48 @@
 </template>
 
 <script>
-  export default {
-    name: 'AppToolbar',
-    methods: {
-      showPageSet() {
-        this.$emit('showPageSet')
-      },
-      showPreview() {
-        this.$emit('showPreview')
-      },
-      saveAll() {
-        this.$emit('savePageSet')
-      }
-    }
-  }
+export default {
+  name: 'AppToolbar',
+  methods: {
+    showPageSet() {
+      this.$emit('showPageSet');
+    },
+    showPreview() {
+      this.$emit('showPreview');
+    },
+    saveAll() {
+      this.$emit('savePageSet');
+    },
+  },
+};
 </script>
 
-<style  lang="scss" scoped>
-  .app-toolbar {
-    position: relative;
-    height: 40px;
-    line-height: 38px;
-    background-color: #fff;
-    border-bottom: 1px solid #e8e8e8;
-    padding-left: 15px;
+<style lang="scss" scoped>
+.app-toolbar {
+  position: relative;
+  height: 40px;
+  line-height: 38px;
+  background-color: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  padding-left: 15px;
 
-    > :last-child {
-      text-align: right;
-    }
+  > :last-child {
+    text-align: right;
+  }
 
-    .bar-btn {
-      display: inline-block;
-      white-space: nowrap;
-      padding: 0 16px;
-      font-size: 14px;
-      text-align: center;
-      vertical-align: middle;
-      user-select: none;
-      cursor: pointer;
+  .bar-btn {
+    display: inline-block;
+    white-space: nowrap;
+    padding: 0 16px;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    cursor: pointer;
 
-      &:hover {
-        background-color: #e8e8e8;
-      }
+    &:hover {
+      background-color: #e8e8e8;
     }
   }
+}
 </style>

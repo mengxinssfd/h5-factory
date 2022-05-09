@@ -1,21 +1,23 @@
 <template>
   <div class="app-sidebar">
-    <div class="sidebar-menu-group" v-for="(menu, index) in menuData">
+    <div class="sidebar-menu-group" v-for="menu in menuData">
       <div class="menu-group-title" @click="menu.collapse = !menu.collapse">
-        {{menu.title}}
+        {{ menu.title }}
         <i :class="[!menu.collapse ? 'el-icon-remove-outline' : 'el-icon-circle-plus-outline']"></i>
       </div>
       <el-collapse-transition>
         <div v-show="!menu.collapse" class="menu-group-list">
-          <div class="menu-item"
-               :data-key="item.key"
-               draggable="true"
-               @dragstart="menuDrag($event, item.key)"
-               v-for="item in menu.items">
+          <div
+            class="menu-item"
+            :data-key="item.key"
+            draggable="true"
+            @dragstart="menuDrag($event, item.key)"
+            v-for="item in menu.items"
+          >
             <div class="item-icon-box">
               <i :class="['fa', item.icon]" aria-hidden="true"></i>
             </div>
-            <p class="item-text-box">{{item.text}}</p>
+            <p class="item-text-box">{{ item.text }}</p>
           </div>
         </div>
       </el-collapse-transition>
@@ -24,25 +26,24 @@
 </template>
 
 <script>
-  // 左侧菜单配置
-  import menuConfig from '@/config/menu.config.js'
-  export default {
-    name: 'AppSide',
-    data() {
-      return {
-        menuData: menuConfig
-      }
+// 左侧菜单配置
+import menuConfig from '@/config/menu.config.js';
+export default {
+  name: 'AppSide',
+  data() {
+    return {
+      menuData: menuConfig,
+    };
+  },
+  methods: {
+    menuDrag(e, key) {
+      e.dataTransfer.setData('cmp-type', key);
     },
-    methods: {
-      menuDrag(e, key) {
-        e.dataTransfer.setData('cmp-type', key)
-      }
-    }
-  }
+  },
+};
 </script>
 
-<style  lang="scss" scoped>
-
+<style lang="scss" scoped>
 .app-sidebar {
   width: 290px;
   border-right: 1px solid #e8e8e8;
@@ -94,7 +95,7 @@
         z-index: 0;
 
         &:hover {
-          opacity: .6;
+          opacity: 0.6;
         }
 
         /* &:nth-child(2n) {

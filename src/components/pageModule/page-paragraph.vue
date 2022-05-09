@@ -1,6 +1,5 @@
 <template>
-  <div :class="['comp-content', component.active ? 'active' : '']"
-       :style="getStyle">
+  <div :class="['comp-content', component.active ? 'active' : '']" :style="getStyle">
     <div class="page-paragraph__title">
       <span class="title-icon">
         <i :class="component.base[0].val"></i>
@@ -17,80 +16,79 @@
 </template>
 
 <script>
-  export default {
-    name: 'PageParagraph',
-    props: {
-      component: {
-        type: Object
-      }
+export default {
+  name: 'PageParagraph',
+  props: {
+    component: {
+      type: Object,
     },
-    computed: {
-      getStyle() {
-        const ret = []
-        this.component.style.forEach((item) => {
-          const unit = item.unit || ''
-          if (item.val) {
-            if (item.attr === 'background-image') {
-              ret.push(item.attr + ':url(' + item.val + ')')
-            } else {
-              ret.push(item.attr + ':' + item.val + unit)
-            }
+  },
+  computed: {
+    getStyle() {
+      const ret = [];
+      this.component.style.forEach((item) => {
+        const unit = item.unit || '';
+        if (item.val) {
+          if (item.attr === 'background-image') {
+            ret.push(item.attr + ':url(' + item.val + ')');
+          } else {
+            ret.push(item.attr + ':' + item.val + unit);
           }
-        })
-        return ret.join(';')
-      }
-    }
-  }
+        }
+      });
+      return ret.join(';');
+    },
+  },
+};
 </script>
 
-<style  lang="scss" scoped>
+<style lang="scss" scoped>
+.page-paragraph__title {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 
-  .page-paragraph__title {
-    margin-bottom: 10px;
+  .title-icon {
+    margin-right: 10px;
     display: flex;
     align-items: center;
 
-    .title-icon {
-      margin-right: 10px;
-      display: flex;
-      align-items: center;
-
-      > i.theme-1 {
-        display: block;
-        width: 4px;
-        height: 14px;
-        background-color: #007aff;
-      }
-      > i.theme-2 {
-        display: block;
-        width: 8px;
-        height: 8px;
-        border: 2px solid #007aff;
-        border-radius: 50%;
-        box-sizing: border-box;
-      }
-    }
-    .title-h1 {
+    > i.theme-1 {
       display: block;
-      font-size: 16px;
-      font-weight: 600;
+      width: 4px;
+      height: 14px;
+      background-color: #007aff;
+    }
+    > i.theme-2 {
+      display: block;
+      width: 8px;
+      height: 8px;
+      border: 2px solid #007aff;
+      border-radius: 50%;
+      box-sizing: border-box;
     }
   }
-
-  .page-paragraph {
-    display: flex;
-
-    .page-paragraph__label {
-      display: block;
-      text-align: left;
-      width: 20px;
-      line-height: 1.5;
-    }
-
-    .page-paragraph__content {
-      flex: 1;
-      line-height: 1.5;
-      font-size: 14px;
-    }
+  .title-h1 {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
   }
+}
+
+.page-paragraph {
+  display: flex;
+
+  .page-paragraph__label {
+    display: block;
+    text-align: left;
+    width: 20px;
+    line-height: 1.5;
+  }
+
+  .page-paragraph__content {
+    flex: 1;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+}
 </style>

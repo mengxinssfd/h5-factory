@@ -1,15 +1,16 @@
 <template>
   <div class="app-option">
     <el-form ref="options-form" label-width="80px" size="mini">
-
-      <h2>【{{option.title}}】</h2>
+      <h2>【{{ option.title }}】</h2>
       <el-form-item class="small" label="组件编号：">
-        <span>{{option.domId}}</span>
+        <span>{{ option.domId }}</span>
       </el-form-item>
       <el-form-item class="small" label="组件名称：">
-        <el-input v-model="option.domName"
-                  maxlength="30"
-                  placeholder="非必填，页内跳转配置使用"></el-input>
+        <el-input
+          v-model="option.domName"
+          maxlength="30"
+          placeholder="非必填，页内跳转配置使用"
+        ></el-input>
       </el-form-item>
 
       <template v-if="option.base && option.base.length">
@@ -26,21 +27,29 @@
       </template>
 
       <template v-if="option.others && option.others.config.length">
-        <h3><i class="el-icon-setting"></i> {{option.others.title}}</h3>
+        <h3><i class="el-icon-setting"></i> {{ option.others.title }}</h3>
         <template v-for="(item, idx) in option.others.config">
           <form-item :item="item" :index="idx"></form-item>
         </template>
       </template>
 
       <template v-if="option.action">
-        <h3><i class="el-icon-setting"></i> {{option.action.title}}</h3>
+        <h3><i class="el-icon-setting"></i> {{ option.action.title }}</h3>
 
         <template v-if="option.action.type === 'image-click'">
-          <image-click :show.sync="imageClickShow"
-                       :img="option.style[1].val"
-                       :clicks="option.action.config"></image-click>
-          <el-button icon="el-icon-plus" :disabled="!option.style[1].val" round
-                     @click="imageClickShow = true">点击区域配置</el-button>
+          <image-click
+            :show.sync="imageClickShow"
+            :img="option.style[1].val"
+            :clicks="option.action.config"
+          ></image-click>
+          <el-button
+            icon="el-icon-plus"
+            :disabled="!option.style[1].val"
+            round
+            @click="imageClickShow = true"
+          >
+            点击区域配置
+          </el-button>
         </template>
 
         <template v-if="option.action.type === 'swiper-click'">
@@ -72,12 +81,20 @@
         </template>
 
         <template v-if="option.action.type === 'timeout-click'">
-          <timeout-item :show.sync="timeoutClickShow"
-                        :end="option.style[0].val"
-                        :img="option.style[1].val"
-                        :times="option.action.config"></timeout-item>
-          <el-button icon="el-icon-plus" :disabled="!option.style[1].val" round
-                     @click="timeoutClickShow = true">时间项配置</el-button>
+          <timeout-item
+            :show.sync="timeoutClickShow"
+            :end="option.style[0].val"
+            :img="option.style[1].val"
+            :times="option.action.config"
+          ></timeout-item>
+          <el-button
+            icon="el-icon-plus"
+            :disabled="!option.style[1].val"
+            round
+            @click="timeoutClickShow = true"
+          >
+            时间项配置
+          </el-button>
         </template>
 
         <template v-if="option.action.type === 'grid-menu-click'">
@@ -95,62 +112,60 @@
         <template v-if="option.action.type === 'page-faq-list'">
           <page-faq-item :paragraphs="option.action.config"></page-faq-item>
         </template>
-
       </template>
-
     </el-form>
   </div>
 </template>
 
 <script>
-  import formItem from '@/common/formItem.vue'
-  import imageClick from '@/views/itemOption/imageClick.vue'
-  import timeoutItem from '@/views/itemOption/timeoutItem.vue'
-  import bannerItem from '@/views/itemOption/bannerItem.vue'
-  import bottomMenuItem from '@/views/itemOption/bottomMenuItem.vue'
-  import floorMenuItem from '@/views/itemOption/floorMenuItem.vue'
-  import horizontalItem from '@/views/itemOption/horizontalItem.vue'
-  import verticalItem from '@/views/itemOption/verticalItem.vue'
-  import scrollItem from '@/views/itemOption/scrollItem.vue'
-  import inputItem from '@/views/itemOption/inputItem.vue'
-  import gridMenuItem from '@/views/itemOption/gridMenuItem.vue'
-  import marqueeItem from '@/views/itemOption/marqueeItem.vue'
-  import pageParagraphItem from '@/views/itemOption/pageParagraphItem.vue'
-  import pageFaqItem from '@/views/itemOption/pageFaqItem.vue'
+import formItem from '@/common/formItem.vue';
+import imageClick from '@/views/itemOption/imageClick.vue';
+import timeoutItem from '@/views/itemOption/timeoutItem.vue';
+import bannerItem from '@/views/itemOption/bannerItem.vue';
+import bottomMenuItem from '@/views/itemOption/bottomMenuItem.vue';
+import floorMenuItem from '@/views/itemOption/floorMenuItem.vue';
+import horizontalItem from '@/views/itemOption/horizontalItem.vue';
+import verticalItem from '@/views/itemOption/verticalItem.vue';
+import scrollItem from '@/views/itemOption/scrollItem.vue';
+import inputItem from '@/views/itemOption/inputItem.vue';
+import gridMenuItem from '@/views/itemOption/gridMenuItem.vue';
+import marqueeItem from '@/views/itemOption/marqueeItem.vue';
+import pageParagraphItem from '@/views/itemOption/pageParagraphItem.vue';
+import pageFaqItem from '@/views/itemOption/pageFaqItem.vue';
 
-  export default {
-    name: 'AppOption',
-    data() {
-      return {
-        imageClickShow: false,
-        timeoutClickShow: false
-      }
+export default {
+  name: 'AppOption',
+  data() {
+    return {
+      imageClickShow: false,
+      timeoutClickShow: false,
+    };
+  },
+  components: {
+    formItem,
+    imageClick,
+    timeoutItem,
+    bannerItem,
+    bottomMenuItem,
+    floorMenuItem,
+    scrollItem,
+    horizontalItem,
+    verticalItem,
+    inputItem,
+    gridMenuItem,
+    marqueeItem,
+    pageParagraphItem,
+    pageFaqItem,
+  },
+  props: {
+    option: {
+      type: Object,
     },
-    components: {
-      formItem,
-      imageClick,
-      timeoutItem,
-      bannerItem,
-      bottomMenuItem,
-      floorMenuItem,
-      scrollItem,
-      horizontalItem,
-      verticalItem,
-      inputItem,
-      gridMenuItem,
-      marqueeItem,
-      pageParagraphItem,
-      pageFaqItem
-    },
-    props: {
-      option: {
-        type: Object
-      }
-    }
-  }
+  },
+};
 </script>
 
-<style  lang="scss">
+<style lang="scss">
 .app-option {
   width: 360px;
   padding: 0 10px 0 5px;

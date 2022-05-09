@@ -33,5 +33,8 @@ module.exports = {
       },
     ],
     'vue/multi-word-component-names': 'warn',
+    'vue/no-mutating-props': 'off',
+    'vue/require-v-for-key': 'warn',
+    'vue/valid-v-for': 'off',
   },
 };
