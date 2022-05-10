@@ -9,6 +9,7 @@ module.exports = {
   rules: {
     // 禁止使用 var
     'no-var': 'error',
+    'no-fallthrough': 'warn',
     // 下面两个规则可以去 参照4 规则看详细介绍
     'vue/html-indent': [
       'error',

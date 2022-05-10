@@ -46,3 +46,31 @@ export default {
     return time_str;
   },
 };
+
+export function optionsToObj(options) {
+  return options.reduce((prev, cur) => {
+    prev[cur.attr] = cur.val;
+    return prev;
+  }, {});
+}
+
+/**
+ * @param {{}} data
+ * @param {{}|void} enable
+ * @return {boolean}
+ */
+export function computeEnable(data, enable) {
+  if (typeof enable !== 'object') return true;
+  const expect = enable.expect.split('.');
+  const value = expect.reduce((prev, cur) => prev[cur], data);
+  if (enable.toBe) {
+    return value === enable.toBe;
+  }
+  if (enable.in) {
+    return enable.in.includes(value);
+  }
+  if (enable.not) {
+    return enable.not !== value;
+  }
+  return false;
+}

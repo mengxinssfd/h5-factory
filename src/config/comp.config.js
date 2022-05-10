@@ -16,9 +16,176 @@ export default {
     domId: '',
     domName: '',
     children: {
-      text: { visible: true, value: '1231' },
-      button: { visible: true, label: '一键复制' },
-      steps: { visible: true, value: ['1.点击“一键复制”', '2.打开【淘宝】', '3.进入详情购买'] },
+      text: {
+        base: [
+          {
+            type: 'radio',
+            label: '文本框',
+            attr: 'visible',
+            val: true,
+            options: [
+              {
+                name: '展示',
+                val: true,
+              },
+              {
+                name: '隐藏',
+                val: false,
+              },
+            ],
+          },
+          {
+            type: 'textarea',
+            label: '文本内容',
+            attr: 'text',
+            val: '',
+            enable: {
+              expect: 'text.visible',
+              toBe: true,
+            },
+          },
+          {
+            type: 'color-picker',
+            label: '边框颜色',
+            attr: 'border-color',
+            val: '#ff4c424c',
+            isStyle: true,
+            enable: {
+              expect: 'text.visible',
+              toBe: true,
+            },
+          },
+          {
+            type: 'select',
+            label: '边框线条',
+            attr: 'border-style',
+            isStyle: true,
+            val: 'dashed',
+            options: [
+              { name: '实线', val: 'solid' },
+              { name: '虚线', val: 'dashed' },
+            ],
+            enable: {
+              expect: 'text.visible',
+              toBe: true,
+            },
+          },
+        ],
+      },
+      button: {
+        base: [
+          {
+            type: 'base-text',
+            label: '按钮文字',
+            attr: 'text',
+            val: '一键复制',
+          },
+          {
+            type: 'select',
+            label: '按钮样式',
+            attr: 'button-style',
+            options: [
+              { name: '面性', val: 'area' },
+              { name: '线性', val: 'line' },
+            ],
+            val: 'area',
+            isNecessary: true,
+          },
+          {
+            type: 'color-picker',
+            isStyle: true,
+            label: '按钮颜色',
+            attr: 'background',
+            val: '#F73E28',
+            isNecessary: true,
+          },
+          {
+            type: 'radio',
+            label: '按钮点击',
+            attr: 'btnAction',
+            val: 'copyText',
+            options: [
+              {
+                name: '复制文本内容',
+                val: 'copyText',
+              },
+              {
+                name: '复制自定义内容',
+                val: 'copyCustomText',
+              },
+              {
+                name: '跳转链接',
+                val: 'link',
+              },
+            ],
+          },
+          {
+            type: 'base-text',
+            attr: 'customText',
+            label: '自定义内容',
+            val: '',
+            enable: {
+              expect: 'button.btnAction',
+              toBe: 'copyCustomText',
+            },
+            isNecessary: true,
+          },
+          {
+            type: 'base-text',
+            attr: 'link',
+            placeholder: '请输入页面跳转链接',
+            label: '页面链接',
+            val: '',
+            enable: {
+              expect: 'button.btnAction',
+              toBe: 'link',
+            },
+            isNecessary: true,
+          },
+          {
+            type: 'base-text',
+            attr: 'copyTips',
+            label: '点击提示',
+            tips: '点击按钮后提示内容，如“复制成功”',
+            val: '',
+            enable: {
+              expect: 'button.btnAction',
+              not: 'link',
+            },
+          },
+        ],
+      },
+      steps: {
+        base: [
+          {
+            type: 'radio',
+            label: '引导提示',
+            attr: 'visible',
+            val: true,
+            options: [
+              {
+                name: '展示',
+                val: true,
+              },
+              {
+                name: '隐藏',
+                val: false,
+              },
+            ],
+          },
+          {
+            type: 'input-array',
+            label: '引导',
+            attr: 'steps',
+            max: 3,
+            enable: {
+              expect: 'steps.visible',
+              toBe: true,
+            },
+            val: ['点击“一键复制”', '打开【淘宝】', '进入详情购买'],
+          },
+        ],
+      },
     },
   },
   'base-text': {
@@ -52,7 +219,7 @@ export default {
         type: 'input-number',
         label: '容器高度',
         attr: 'height',
-        val: '',
+        val: '16',
         unit: 'px',
         isNecessary: false,
       },

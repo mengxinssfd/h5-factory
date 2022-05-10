@@ -20,3 +20,7 @@ node_modules/
 # information for Eclipse / Flash Builder.
 
 dist
+
+#.env
+.env.test
+.env.local

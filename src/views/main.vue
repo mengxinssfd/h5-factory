@@ -6,10 +6,12 @@
         v-on:showPageSet="showPageSet"
         v-on:savePageSet="savePageSet"
         v-on:showPreview="showPreview"
+        @generatePage="generatePage"
       ></app-toolbar>
       <div class="scroll-y">
         <div
           class="app-phone"
+          :style="appStyle"
           @dragover.self="dragPhoneOver"
           @dragleave.self="dragPhoneLeave"
           @drop.self="dropPhone"
@@ -89,7 +91,10 @@
       </div>
     </div>
 
-    <preview-dialog :show.sync="previewShow" :cpnList="compList"></preview-dialog>
+    <preview-dialog
+      :show.sync="previewShow"
+      :config="{ page: pageConfig, components: compList }"
+    ></preview-dialog>
 
     <app-opt v-if="currentConfig" :option="currentConfig"></app-opt>
     <app-page-opt v-else :option="pageConfig"></app-page-opt>
@@ -116,6 +121,8 @@ import previewDialog from '@/common/PreviewDialog.vue';
 import pageOption from '@/config/page.config.js';
 // 组件默认配置
 import compConfig from '@/config/comp.config.js';
+import { generatePage } from '@/utils/generatePage';
+import { Download } from '@mxssfd/ts-utils';
 
 export default {
   name: 'AppMain',
@@ -141,6 +148,20 @@ export default {
       currentIndex: -1,
       currentConfig: null,
     };
+  },
+  computed: {
+    appStyle() {
+      const style = this.pageConfig.style.reduce((prev, cur) => {
+        prev[cur.attr] = (cur.val || '') + (cur.unit || '');
+        return prev;
+      }, {});
+      // 有可能color会在后面覆盖了背景图
+      if (style.background) {
+        // delete style['background-color'];
+        style.background = `url(${style.background})`;
+      }
+      return style;
+    },
   },
   mounted() {
     this.$bus.$on('click:show', (idx, tabs) => {
@@ -192,6 +213,11 @@ export default {
     },
   },
   methods: {
+    generatePage() {
+      const page = generatePage({ page: this.pageConfig, components: this.compList });
+      const content = window.URL.createObjectURL(new Blob([page]));
+      Download.download('test.html', content);
+    },
     showPageSet() {
       this.resetCompUnchecked();
       this.currentIndex = -1;
@@ -436,8 +462,11 @@ export default {
       cursor: pointer;
 
       &.current {
-        border: 1px solid #2aa7ff;
-
+        border: 1px dashed #4e75ff;
+        border-radius: 4px;
+        .comp-content {
+          pointer-events: none;
+        }
         .comp-menu {
           display: block;
         }

@@ -1,15 +1,27 @@
 <template>
   <div>
-    <el-form-item class="small" label="文本框：">
-      <el-input v-model="config.children.text.value" :maxlength="128"></el-input>
-    </el-form-item>
+    <template v-for="(item, idx) in text.base">
+      <form-item :item="item" :index="idx" v-if="enable(item)"></form-item>
+    </template>
+
+    <template v-for="(item, idx) in button.base">
+      <form-item :item="item" :index="idx" v-if="enable(item)"></form-item>
+    </template>
+
+    <template v-for="(item, idx) in steps.base">
+      <form-item :item="item" :index="idx" v-if="enable(item)"></form-item>
+    </template>
   </div>
 </template>
 
 <script>
-import util from '@/utils/util.js';
+import util, { computeEnable, optionsToObj } from '@/utils/util.js';
 import compConfig from '@/config/comp.config.js';
+import formItem from '@/common/formItem.vue';
 export default {
+  components: {
+    formItem,
+  },
   data() {
     return {
       list: this.items,
@@ -24,10 +36,29 @@ export default {
       },
     },
   },
-  mounted() {
-    console.log('11111111111');
+  computed: {
+    text() {
+      return this.config.children.text;
+    },
+    button() {
+      return this.config.children.button;
+    },
+    steps() {
+      return this.config.children.steps;
+    },
+    base() {
+      return {
+        text: optionsToObj(this.text.base),
+        button: optionsToObj(this.button.base),
+        steps: optionsToObj(this.steps.base),
+      };
+    },
   },
-  methods: {},
+  methods: {
+    enable(item) {
+      return computeEnable(this.base, item.enable);
+    },
+  },
 };
 </script>
 

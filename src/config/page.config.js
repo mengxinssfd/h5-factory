@@ -41,6 +41,13 @@ export default {
   ],
   style: [
     {
+      type: 'input-number',
+      label: '页边距',
+      attr: 'padding',
+      val: '10',
+      unit: 'px',
+    },
+    {
       type: 'color-picker',
       label: '背景颜色',
       attr: 'background-color',
@@ -49,7 +56,7 @@ export default {
     {
       type: 'upload',
       label: '背景图片',
-      attr: 'background-image',
+      attr: 'background',
       val: '',
     },
     {

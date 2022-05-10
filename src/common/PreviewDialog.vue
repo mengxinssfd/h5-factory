@@ -10,8 +10,8 @@
   >
     <el-row>
       <el-col :span="12" style="text-align: center; width: 375px; background-color: #f2f3f4">
-        <div class="phone">
-          <template v-for="comp in cpnList">
+        <div class="phone" :style="appStyle">
+          <template v-for="comp in config.components">
             <component :is="comp.type" :component="comp"></component>
           </template>
         </div>
@@ -34,10 +34,10 @@ export default {
       type: Boolean,
       default: false,
     },
-    cpnList: {
-      type: Array,
+    config: {
+      type: Object,
       default() {
-        return [];
+        return { page: {}, components: [] };
       },
     },
   },
@@ -45,6 +45,21 @@ export default {
     return {
       visible: this.show,
     };
+  },
+  computed: {
+    appStyle() {
+      console.log(this.config);
+      const style = this.config.page.style.reduce((prev, cur) => {
+        prev[cur.attr] = (cur.val || '') + (cur.unit || '');
+        return prev;
+      }, {});
+      // 有可能color会在后面覆盖了背景图
+      if (style.background) {
+        // delete style['background-color'];
+        style.background = `url(${style.background})`;
+      }
+      return style;
+    },
   },
   watch: {
     show(val) {
@@ -91,6 +106,7 @@ export default {
       display: block;
       border: none;
       outline: 1px solid #e8e8e8;
+      box-sizing: border-box;
       width: 375px;
       height: 630px;
       overflow: auto;

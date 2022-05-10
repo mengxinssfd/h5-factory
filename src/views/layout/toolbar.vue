@@ -4,6 +4,10 @@
       <span><i class="fa fa-mobile-phone"></i> 当前适配设计稿：750x1334 px</span>
     </el-col>
     <el-col :span="12">
+      <div class="bar-btn" @click="generatePage()">
+        <i class="el-icon-edit"></i>
+        <span>生成html</span>
+      </div>
       <div class="bar-btn" @click="saveAll()">
         <i class="el-icon-edit"></i>
         <span>保存</span>
@@ -24,6 +28,9 @@
 export default {
   name: 'AppToolbar',
   methods: {
+    generatePage() {
+      this.$emit('generatePage');
+    },
     showPageSet() {
       this.$emit('showPageSet');
     },
