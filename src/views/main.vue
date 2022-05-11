@@ -110,7 +110,7 @@
 </template>
 
 <script>
-import util from '@/utils/util.js';
+import util, { optionsToObj } from '@/utils/util.js';
 import appSidebar from '@/views/layout/sidebar.vue';
 import appToolbar from '@/views/layout/toolbar.vue';
 import appOpt from '@/views/layout/option.vue';
@@ -133,6 +133,9 @@ export default {
     appPageOpt,
     clickConfig,
     previewDialog,
+  },
+  provide: {
+    inDesign: true,
   },
   data() {
     return {
@@ -215,8 +218,10 @@ export default {
   methods: {
     generatePage() {
       const page = generatePage({ page: this.pageConfig, components: this.compList });
+      const base = optionsToObj(this.pageConfig.base);
       const content = window.URL.createObjectURL(new Blob([page]));
-      Download.download('test.html', content);
+      const filename = (base.filename || 'page') + '.html';
+      Download.download(filename, content);
     },
     showPageSet() {
       this.resetCompUnchecked();

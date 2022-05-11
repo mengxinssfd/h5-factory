@@ -19,6 +19,7 @@ import util, { computeEnable, optionsToObj } from '@/utils/util.js';
 import compConfig from '@/config/comp.config.js';
 import formItem from '@/common/formItem.vue';
 export default {
+  name: 'OneKeyCopyOptions',
   components: {
     formItem,
   },

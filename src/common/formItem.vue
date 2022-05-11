@@ -9,7 +9,7 @@
           :rows="4"
           :placeholder="item.placeholder"
         ></el-input>
-        <div v-if="item.tips">{{ item.tips }}</div>
+        <div v-if="item.tips" class="tips">{{ item.tips }}</div>
       </div>
     </el-form-item>
     <template v-else-if="item.type === 'input-array'">
@@ -27,7 +27,7 @@
         ></i>
         <i v-else class="el-icon el-icon-remove" @click="item.val.splice(idx, 1)"></i>
       </el-form-item>
-      <div v-if="item.tips">{{ item.tips }}</div>
+      <div v-if="item.tips" class="tips">{{ item.tips }}</div>
     </template>
     <el-form-item v-else class="small" :label="item.label + '：'">
       <el-input
@@ -93,9 +93,23 @@
       </template>
 
       <template v-if="item.type === 'radio'">
-        <template v-for="opt in item.options">
-          <el-radio v-model="item.val" :label="opt.val">{{ opt.name }}</el-radio>
-        </template>
+        <div>
+          <template v-for="opt in item.options">
+            <el-radio v-model="item.val" :label="opt.val">{{ opt.name }}</el-radio>
+          </template>
+        </div>
+        <div>
+          <template v-for="(opt, idx) in item.options">
+            <div
+              :key="'radio-tips' + idx"
+              class="tips"
+              v-if="opt.tips"
+              v-show="item.val === opt.val"
+            >
+              {{ opt.tips }}
+            </div>
+          </template>
+        </div>
       </template>
 
       <template v-if="item.type === 'datetime'">
@@ -120,7 +134,7 @@
         <span class="form-item-desc" v-html="item.val"></span>
       </template>
 
-      <div v-if="item.tips">{{ item.tips }}</div>
+      <div v-if="item.tips" class="tips">{{ item.tips }}</div>
     </el-form-item>
   </div>
 </template>
@@ -170,6 +184,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tips {
+  font-size: 12px;
+  color: #9b9a9a;
+}
 span.form-item-desc {
   font-size: 12px;
   color: #666;
@@ -186,6 +204,12 @@ span.form-item-desc {
 }
 .el-icon {
   cursor: pointer;
-  color: #4e75ff;
+
+  &.el-icon-circle-plus {
+    color: #4e75ff;
+  }
+  &.el-icon-remove {
+    color: red;
+  }
 }
 </style>

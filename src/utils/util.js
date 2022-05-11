@@ -49,7 +49,11 @@ export default {
 
 export function optionsToObj(options) {
   return options.reduce((prev, cur) => {
-    prev[cur.attr] = cur.val;
+    let value = cur.val;
+    if (value && cur.unit) {
+      value += cur.unit;
+    }
+    prev[cur.attr] = value;
     return prev;
   }, {});
 }

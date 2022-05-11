@@ -16,7 +16,7 @@
           </template>
         </div>
 
-        <div class="pre-desc">
+        <div v-if="false" class="pre-desc">
           <h3 style="color: red">预览说明：</h3>
           <p>1、部分组件尚未实现预览；</p>
           <p>2、组件尚未点击效果；</p>
@@ -41,6 +41,9 @@ export default {
       },
     },
   },
+  provide: {
+    inDesign: false,
+  },
   data() {
     return {
       visible: this.show,
@@ -48,7 +51,6 @@ export default {
   },
   computed: {
     appStyle() {
-      console.log(this.config);
       const style = this.config.page.style.reduce((prev, cur) => {
         prev[cur.attr] = (cur.val || '') + (cur.unit || '');
         return prev;

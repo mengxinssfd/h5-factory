@@ -1,11 +1,8 @@
 <template>
   <div class="comp-content" :class="{ active: component.active }" :style="getStyle">
-    <div
-      v-if="textBase.visible"
-      class="text-box"
-      v-html="textBase.text || '请输入内容'"
-      :style="textStyle"
-    ></div>
+    <div v-if="textBase.visible" class="text-box" :style="textStyle">
+      <p v-html="textContent"></p>
+    </div>
     <button :style="buttonStyle" @click="handleClick">
       {{ buttonBase.text }}
     </button>
@@ -15,7 +12,7 @@
       :style="{ 'grid-template-columns': `repeat(${stepsBase.steps.length}, 1fr)` }"
     >
       <div class="step" v-for="(step, idx) in stepsBase.steps" :key="`step${idx}`">
-        {{ idx + 1 }}.{{ step }}
+        {{ step }}
       </div>
     </div>
   </div>
@@ -27,6 +24,7 @@ import { copy2Clipboard } from '@mxssfd/ts-utils';
 
 export default {
   name: 'OneKeyCopy',
+  inject: ['inDesign'],
   props: {
     component: {
       type: Object,
@@ -44,6 +42,14 @@ export default {
     },
     textBase() {
       return optionsToObj(this.text.base);
+    },
+    textContent() {
+      const text = this.textBase.text;
+      if (text) return text;
+      if (this.inDesign) {
+        return '请输入内容';
+      }
+      return '';
     },
     button() {
       return this.component.children.button;
@@ -118,6 +124,12 @@ $mt: 10px;
   font-weight: 500;
   color: #ff4c42;
   line-height: 20px;
+
+  word-break: break-all;
+  p {
+    display: inline-block;
+    text-align: left;
+  }
 }
 button {
   width: 100%;
@@ -133,6 +145,7 @@ button {
 .steps {
   display: grid;
   grid-gap: 0;
+  align-items: center;
 
   font-size: 12px;
   font-weight: bold;

@@ -108,14 +108,17 @@ export default {
               {
                 name: '复制文本内容',
                 val: 'copyText',
+                tips: '点击按钮复制文本框中的内容；',
               },
               {
                 name: '复制自定义内容',
                 val: 'copyCustomText',
+                tips: '点击按钮复制自定义文本内容；',
               },
               {
                 name: '跳转链接',
                 val: 'link',
+                tips: '点击按钮跳转到链接；',
               },
             ],
           },
@@ -147,7 +150,7 @@ export default {
             attr: 'copyTips',
             label: '点击提示',
             tips: '点击按钮后提示内容，如“复制成功”',
-            val: '',
+            val: '复制成功',
             enable: {
               expect: 'button.btnAction',
               not: 'link',
@@ -182,7 +185,7 @@ export default {
               expect: 'steps.visible',
               toBe: true,
             },
-            val: ['点击“一键复制”', '打开【淘宝】', '进入详情购买'],
+            val: ['1.点击“一键复制”', '2.打开【淘宝】', '3.进入详情购买'],
           },
         ],
       },

@@ -1,5 +1,10 @@
 module.exports = {
   /* 指定如何解析语法。*/
+  env: {
+    node: true,
+    es6: true,
+    browser: true,
+  },
   extends: [
     'plugin:vue/essential',
     'eslint:recommended',

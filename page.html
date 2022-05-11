@@ -1,9 +1,4 @@
-import { optionsToObj } from '@/utils/util';
-
-export function generatePage(config) {
-  config = JSON.stringify(config);
-  const componentsUrl = import.meta.env.VITE_APP_COMPONETS_URL;
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -101,7 +96,6 @@ export function generatePage(config) {
         max-width: 750px;
         margin: auto;
         box-shadow: 0 0 10px 10px #f5f5f5;
-        min-height: 100vh;
       }
     </style>
   </head>
@@ -124,37 +118,34 @@ export function generatePage(config) {
     <script src="https://cdn.staticfile.org/vue/2.6.9/vue.min.js"></script>
     <script src="${componentsUrl}"></script>
     <script>
-      const config = ${config};
-
+      /*
+       * npm run components后把这个文件放dist里面，就可以看到生成的页面了
+       * */
+      const config = [];
       components.install(Vue);
-
-      const optionsToObj = ${optionsToObj.toString()};
-
-      const base = optionsToObj(config.page.base);
-      document.title = base['page-title'];
-
       new Vue({
-        template: \`<div id="main" :style="appStyle">
-            <template v-for="comp in config.components">
-            <component :is="comp.type" :component="comp"></component>
-            </template>
-            </div>\`,
+        template: `
+      <div id="main" :style="appStyle">
+      <template v-for="comp in config.components">
+        <component :is="comp.type" :component="comp"></component>
+      </template>
+      </div>`,
         data() {
-          return { config };
+          return { config: config };
         },
         computed: {
           appStyle() {
-            const style = optionsToObj(config.page.style);
+            const style = config.page.style.reduce((prev, cur) => {
+              prev[cur.attr] = (cur.val || '') + (cur.unit || '');
+              return prev;
+            }, {});
             if (style.background) {
-              style.background = \`url(\${style.background})\`;
+              style.background = `url(${style.background})`;
             }
             return style;
           },
         },
-
       }).$mount('#app');
     </script>
   </body>
 </html>
-`;
-}

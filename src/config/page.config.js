@@ -2,9 +2,9 @@ export default {
   title: '页面配置',
   base: [
     {
-      type: 'text',
+      type: 'base-text',
       label: '页面名称',
-      attr: 'page-name',
+      attr: 'page-title',
       placeholder: '例：双十一专题主页',
       val: '',
       isNecessary: true,
@@ -27,9 +27,9 @@ export default {
       isNecessary: false,
     },
     {
-      type: 'text',
+      type: 'base-text',
       label: '文件名称',
-      attr: 'page-name',
+      attr: 'filename',
       rules: {
         regex: '^[0-9a-zA-Z_]{1,}$',
         tips: '只能输入字母、数字或者下划线',

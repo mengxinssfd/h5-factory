@@ -12,7 +12,7 @@
         </template>
       </template>
 
-      <template>
+      <template v-if="false">
         <h3><i class="el-icon-setting"></i> 分享配置</h3>
         <template v-for="(item, idx) in option.weixin">
           <form-item :item="item" :index="idx"></form-item>

@@ -45,7 +45,7 @@ export default defineConfig(({ mode, command }) => {
             lib: {
               entry: resolve(__dirname, 'src/main.js'),
               name: 'main',
-              fileName: (format) => `main.${format}.js`,
+              fileName: (format) => `index.${format}.js`,
               formats: ['umd'],
             },
             sourcemap: false,
